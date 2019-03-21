@@ -20,9 +20,9 @@ public class JavaApplication1 {
         Student student2 = new Student("Julia Veselkina");
         Student student3 = new Student("Maria Perechrest");
         
-        student1.setKnowledge(knowledge3);
+        student1.setKnowledge(knowledge1);
         student2.setKnowledge(knowledge2);
-        student3.setKnowledge(knowledge2);
+        student3.setKnowledge(knowledge3);
         
 //        System.out.println("List of students:");
 //        System.out.println(student1.getName());
@@ -36,18 +36,20 @@ public class JavaApplication1 {
         university.addStudent(student1);
         university.addStudent(student2);
         university.addStudent(student3);
-
-        System.out.println("Count of students in the university:" + university.getCountOfStudents());
-        System.out.println("Average by university: " + university.getAverage());
-//        System.out.println(student2.getName());
-//        System.out.println(student2.getKnowledge());
-//        System.out.println(student3.getName());
-//        System.out.println(student3.getKnowledge());
+        university.getStudents().forEach(System.out::print);
         
-//        Internship internship = new Internship("Interlink");
-//        System.out.println("List of internship's students:");
-//        System.out.println(internship.setStudent(student3));
-//        System.out.println(internship.getStudents());
+        System.out.println();
+        
+        System.out.println("Count of the students in the university: " + university.getStudents().size());
+        System.out.println("Average level of the knowledge by the university: " + university.getAverage());
+        
+        Internship internship = new Internship("Interlink");
+        System.out.println("Add students to the intership:");
+        internship.addStudent(student1, university);
+        internship.addStudent(student2, university);
+        internship.addStudent(student3, university);
+        
+        internship.getStudents().forEach(System.out::print);
         
     }
 }
