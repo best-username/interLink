@@ -1,28 +1,29 @@
 package institution;
 
 import person.Student;
+import java.util.ArrayList;
 
 public class University {
     
     private String name;
-    private Student[] students = new Student[100];
-    private int countOfStudents;
+    private ArrayList<Student> students;
+    private int average;
     private int totalScore;
     
     // constructor to set up the initial values to an object
     public University(String name) {
         this.name = name;
+        students = new ArrayList<Student>();
     }
 
+    //setters, getters and so on
     public void setStudent(Student student) {
-        students[countOfStudents] = student;
-        countOfStudents++;
+        addStudent(student);
     }
 
     public void addStudent(Student student) {
-        System.out.println("New student: " + countOfStudents);
-        students[countOfStudents] = student;
-        countOfStudents++;
+        students.add(student);
+        computeAverage();
     }
 
     public String getName() {
@@ -33,37 +34,28 @@ public class University {
         this.name = name;
     }
 
-    public int getAverage() {
-        for (int i = 0; i < countOfStudents ; i++) {
-//            System.out.println("            " + students[i].getName() + ": " + students[i].getKnowledge());
-            totalScore += students[i].getKnowledge();
-        }
-        return totalScore / countOfStudents;
-    }
-
-    public Student[] getStudents() {
+    public ArrayList<Student> getStudents() {
         return students;
-    }
-
-    public void setStudents(Student[] students) {
-        this.students = students;
-    }
-
-    public int getCountOfStudents() {
-        return countOfStudents;
-    }
-
-    public void setCountOfStudents(int countOfStudents) {
-        this.countOfStudents = countOfStudents;
     }
 
     public int getTotalScore() {
         return totalScore;
     }
-
-    public void setTotalScore(int totalScore) {
-        this.totalScore = totalScore;
+    
+    public int getAverage() {
+        return average;
     }
     
-    
+    public void setAverage(int average) {
+        this.average = average;
+    }
+
+    // compute average level of the knowledge in the university
+    public void computeAverage() {
+        totalScore = 0;
+        for (int i=0; i<students.size(); i++)
+            totalScore += students.get(i).getKnowledge().getLevel();
+        setAverage(totalScore / students.size());
+    }
+
 }
