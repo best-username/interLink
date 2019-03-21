@@ -46,16 +46,12 @@ public class University {
         return average;
     }
     
-    public void setAverage(int average) {
-        this.average = average;
-    }
-
     // compute average level of the knowledge in the university
     public void computeAverage() {
         totalScore = 0;
         for (int i=0; i<students.size(); i++)
             totalScore += students.get(i).getKnowledge().getLevel();
-        setAverage(totalScore / students.size());
+        this.average = totalScore / students.size();
     }
 
 }
