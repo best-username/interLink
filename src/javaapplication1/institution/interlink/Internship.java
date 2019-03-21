@@ -18,13 +18,6 @@ public class Internship {
         students.add(student);
     }
     
-    public void addStudent(Student student, University university) {
-        if(student.getKnowledge().getLevel() > university.getAverage())
-            setStudent(student);
-        else
-            System.out.println(student.getName() + " , sorry, but you can not be added to the intership, please, become more clever and come again ;)\n");
-    }
-
     public ArrayList<Student> getStudents() {
         return students;
     }

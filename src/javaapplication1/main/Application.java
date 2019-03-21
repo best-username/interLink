@@ -45,9 +45,11 @@ public class Application {
         
         Internship internship = new Internship("Interlink");
         System.out.println("Add students to the intership:");
-        internship.addStudent(student1, university);
-        internship.addStudent(student2, university);
-        internship.addStudent(student3, university);
+        int avg = university.getAverage();
+        for (Student student : university.getStudents()) {
+            if(student.getKnowledge().getLevel() > avg)
+                internship.setStudent(student);
+        }
         System.out.println("Students in the intership: ");
         internship.getStudents().forEach(System.out::print);
         
